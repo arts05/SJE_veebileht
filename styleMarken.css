@@ -3,16 +3,15 @@
   --paneel: #11161d;
   --muted: #9aa4af;
   --tekst: #e6eef8;
-  --varv: #5dd19b;
-  --varv-2: #4ca3ff;
-  --ring: 0 0 0 3px rgba(92, 209, 155, .35);
+  --varv: #ee9461;
+  --varv-2: #f37724;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0; font: 500 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, sans-serif;
-  color: var(--tekst); background: radial-gradient(1200px 600px at 80% -10%, rgba(76,163,255,.20), transparent 60%),
-                         radial-gradient(800px 400px at -10% 20%, rgba(93,209,155,.18), transparent 60%),
+  color: var(--tekst); background: radial-gradient(1200px 700px at 80% -10%, rgba(253, 121, 13, 0.2), transparent 60%),
+                         radial-gradient(700px 1200px at -10% 20%, rgba(253, 121, 13, 0.2), transparent 60%),
                          var(--bg);
   letter-spacing: .2px;
 }
@@ -27,7 +26,6 @@ header {
   border-bottom: 1px solid color-mix(in oklab, var(--paneel), #000 30%);
 }
 .nav { display: flex; align-items: center; gap: 18px; padding: 14px 0; }
-.varv { font-weight: 800; letter-spacing: .4px; display: inline-flex; align-items: center; gap: 10px; }
 .nav-spacer { flex: 1; }
 .nav a { opacity: .9; }
 .nupp {
@@ -37,7 +35,7 @@ header {
   color: var(--tekst); text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.25);
 }
 .nupp:hover { box-shadow: 0 10px 28px rgba(0,0,0,.3); transform: translateY(-1px); }
-.nupp.põhi { background: linear-gradient(160deg, color-mix(in oklab, var(--varv) 55%, #2a2e33), color-mix(in oklab, var(--varv-2) 40%, #1b2735)); border-color: transparent; }
+.nupp.põhi { background: linear-gradient(160deg, color-mix(in oklab, var(--varv) 55%, #fd9722), color-mix(in oklab, var(--varv-2) 40%, #959703)); border-color: transparent; }
 
 /* Tutvustus */
 .tutvustus { padding: clamp(44px, 7vw, 96px) 0 40px; }
@@ -71,8 +69,3 @@ p { margin: .3em 0 1em; }
 
 /* Jalus */
 footer { padding: 40px 0 60px; color: var(--muted); }
-
-/* Ligipääsetavuse abi */
-.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-.skip { position: absolute; left: -9999px; }
-.skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--varv-2); color: #001; padding: 8px 12px; border-radius: 10px; outline: none; box-shadow: 0 0 0 3px rgba(76,163,255,.4); }
