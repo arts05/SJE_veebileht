@@ -1,8 +1,409 @@
 :root {
-  --bg: #0a3c7e;
-  --paneel: #0c499f;
+  --bg: #0c0f13;
+  --paneel: #11161d;
   --muted: #9aa4af;
   --tekst: #e6eef8;
-  --varv: #ffa600;
-  --varv-2: #4ca3ff;
+  --varv: #ee9461;
+  --varv-2: #f37724;
+  --live-red: #ff4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font: 500 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu,
+    sans-serif;
+  color: var(--tekst);
+
+  /* PARANDATUD TAUST */
+  background-color: var(--bg);
+  background-image: radial-gradient(
+      1200px 700px at 80% -10%,
+      rgba(253, 121, 13, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 1200px at -10% 20%,
+      rgba(253, 121, 13, 0.1),
+      transparent 60%
+    );
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* See hoiab tausta paigal kerimise ajal */
+
+  letter-spacing: 0.2px;
+}
+
+a {
+  color: var(--varv-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--varv);
+}
+
+/* Paigutus */
+.konteiner {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--paneel), #fff 5%);
+}
+
+header .konteiner.nav div img {
+  width: 360px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 0;
+}
+.nav-spacer {
+  flex: 1;
+}
+.nav a {
+  opacity: 0.8;
+  font-weight: 600;
+  color: var(--tekst);
+}
+.nav a:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: var(--varv);
+}
+
+/* Nupud */
+.nupp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.68rem 1.2rem;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--paneel), #2a3544 30%),
+    var(--paneel)
+  );
+  border: 1px solid color-mix(in oklab, var(--paneel), #fff 10%);
+  color: var(--tekst);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.nupp:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: var(--muted);
+  text-decoration: none;
+}
+
+.nupp.põhi {
+  background: linear-gradient(135deg, var(--varv-2), #d65a0c);
+  border-color: transparent;
+  color: #fff;
+}
+.nupp.põhi:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 20px rgba(243, 119, 36, 0.4);
+}
+
+/* Üldised Sektsioonid */
+section {
+  padding: 40px 0;
+}
+
+.paneel {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--paneel), #1b2735 40%),
+    var(--paneel)
+  );
+  border: 1px solid color-mix(in oklab, var(--paneel), #fff 8%);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1,
+h2,
+h3 {
+  color: #fff;
+  line-height: 1.2;
+}
+h2 {
+  font-size: clamp(22px, 3.6vw, 32px);
+  margin: 0 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+h3 {
+  margin: 1.2em 0 0.5em;
+  font-size: 20px;
+}
+p {
+  margin: 0.3em 0 1em;
+  color: var(--muted);
+}
+
+/* Ruudustik süsteem */
+.ruudustik {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.col-12 {
+  grid-column: span 12;
+}
+/* Kui tahad tulevikus kasutada veerge:
+.col-6 { grid-column: span 6; } 
+*/
+
+/* Ajajoon */
+.ajajoon {
+  position: relative;
+  padding-left: 24px;
+  margin-top: 20px;
+}
+.ajajoon:before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--varv),
+    var(--varv-2),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.uhke-list {
+  position: relative;
+  padding: 0 0 25px 20px;
+}
+.uhke-list:before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--varv);
+  box-shadow: 0 0 10px rgba(238, 148, 97, 0.3);
+  z-index: 2;
+}
+.uhke-list strong {
+  color: var(--tekst);
+}
+.uhke-list img {
+  vertical-align: middle;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+/* === UUS OSA: HERO / LIVE SEKTSIOON === */
+
+.hero-paneel {
+  border: 1px solid var(--varv-2); /* Oranž ääris aktiivsele asjale */
+  background: radial-gradient(
+      circle at top right,
+      rgba(243, 119, 36, 0.1),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #161d26, #11161d);
+  padding: 0; /* Eemaldame tavalise paneeli paddingu, et kasutada gridi */
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-info {
+  padding: 40px;
+  z-index: 2;
+}
+
+.hero-pilt {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+.hero-logo-img {
+  width: 220px;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(243, 119, 36, 0.4));
+  z-index: 2;
+  transition: transform 0.5s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Live indikaator */
+.olek-rida {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.kuupaevad {
+  color: var(--varv);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.live-indikaator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 68, 68, 0.15);
+  color: var(--live-red);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+}
+.mumm {
+  width: 8px;
+  height: 8px;
+  background-color: var(--live-red);
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Hero tekstid */
+.hero-info h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 0 0 15px 0;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-kirjeldus {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+/* Info kastike */
+.andmed-kast {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--varv);
+  padding: 15px;
+  margin: 20px 0 30px;
+  border-radius: 0 8px 8px 0;
+}
+.andmed-rida {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+.andmed-rida:last-child {
+  margin-bottom: 0;
+}
+.andmed-rida span {
+  margin-right: 10px;
+}
+
+.cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 850px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-pilt {
+    display: none;
+  }
+  .hero-info {
+    padding: 25px;
+  }
+  .cta {
+    width: 100%;
+  }
+  .nupp {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+#toimunud {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+/* Jalus */
+footer {
+  padding: 40px 0 60px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
 }
