@@ -1,0 +1,128 @@
+/* Pealkirjade fondi suurused */
+h1 {
+    font-size: clamp(20px, 60px, 100px); 
+}
+
+h2 {
+    font-size: clamp(20px, 35px, 40px); 
+}
+
+/* Pildi suurused */
+.team-img {
+  width: 35%;      
+  height: auto;
+  flex-shrink: 0
+}
+
+/* Keha struktuur/paigutus */
+body {       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0c0f13;
+    color: #e6eef8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Tausta/ümbrus kast mängijad sektsioonile */
+.players, .results {   
+    flex: 1;
+    background-color: #11161d; 
+    padding: 15px;
+    border-radius: 16px;
+    text-align: justify;
+    border: 1px solid #ee9461;
+}
+.players ul {
+    list-style: none;              
+    padding-left: 20px;                   
+    margin: 0;
+}
+.players ul li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    margin-bottom: 6px; 
+    position: relative;
+}
+.players ul li::before {
+    content: "•";         /* bullet */
+    color: white;         /* täpi värv */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
+.players h3 {
+    text-align: center;
+}
+
+/* Saavutuste tabeli tasut/ümbrus ja enda kujundus */
+.table {
+    width: 50%;
+    justify-content: center;
+    flex: 1;
+    background-color: #11161d; 
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #ee9461;  
+}
+.table th,
+.table td {
+    border: 1px solid #fff;
+    padding: 2px;
+}
+.table table {
+    margin: 0 auto;  /* paneb tabeli kastis keskele */
+    border-collapse: collapse;   /* tabelis ei ole vahesid */
+}
+
+/* Meeskonnakirjelduse ja intro paragraafi kujundus ja taust/ümbrus  */
+.põhitekst_kitsas {        /* Teeb paragraafi kitsamaks */
+    max-width: 1000px;   
+    width: 100%;
+    margin-top: 20px;
+    text-align: justify;
+}
+.pikkemtekst {  /* Meeskonna paragraaf */
+    flex: 1;
+    background-color: #11161d; /* taust */
+    padding: 15px;
+    border-radius: 16px;
+    text-align: justify;
+    border: 1px solid #ee9461;
+}
+.algustekst {     /* Introteksti paigutus */
+    text-align: justify
+}
+
+/* Nuppu kujundus */
+#scroll-btn {       
+    opacity: 0;   
+    width: 125px;
+    height: 50px;
+    color: #e6eef8;
+    background-color: #11161d;
+    position: fixed;
+    bottom: 10%;
+    right: 10%;    
+    border: 2px solid #ee9461;
+    border-radius: 10%; 
+    font: bold 20px monospace;       
+    transition: opacity 0.5s, transform 0.5s;
+}
+#scroll-btn.show {      
+    opacity: 1;  
+    transition: opacity 1s, transform 1s;     
+}
