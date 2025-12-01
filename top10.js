@@ -24,3 +24,20 @@ const scrollWindow = function () {
   }
 };
 scrollBtn.addEventListener("click", scrollWindow);
+
+
+
+// Header kaob ära
+let viimane = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  const praegu = window.scrollY;
+  if (praegu > viimane && praegu > 1150) {
+    header.classList.add("peidus");
+  } 
+  else {
+    header.classList.remove("peidus");
+  }
+  viimane = praegu;
+});
